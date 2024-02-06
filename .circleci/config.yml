@@ -3,12 +3,9 @@ version: 2.1
 jobs:
   build-and-test:
     docker:
-      - image: circleci/openjdk:21.0
+      - image: circleci/openjdk:8.0
     steps:
       - checkout
-      - run:
-          name: Download Maven dependencies
-          command: mvn dependency:go-offline
       - run:
           name: Run tests
           command: mvn test
