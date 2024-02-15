@@ -10,6 +10,7 @@
 
 
     <build>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
         <plugins>
 
             <plugin>
@@ -28,7 +29,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
-                    <!-- la configuration des tests on peut le faire ici -->
                 </configuration>
             </plugin>
         </plugins>
