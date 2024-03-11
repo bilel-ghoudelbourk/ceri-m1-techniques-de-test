@@ -38,4 +38,5 @@ public class IPokedexFactoryTest {
         assertNotSame(createdPokedex1, createdPokedex2);
     }
 
+
 }

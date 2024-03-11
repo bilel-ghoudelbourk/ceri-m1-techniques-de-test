@@ -26,6 +26,7 @@ public class IPokemonFactoryTest {
         assertTrue(pokemon.getAttack() >= 126 && pokemon.getAttack() <= 141);
         assertTrue(pokemon.getDefense() >= 126 && pokemon.getDefense() <= 141);
         assertTrue(pokemon.getStamina() >= 90 && pokemon.getStamina() <= 105);
+
     }
 
     @Test

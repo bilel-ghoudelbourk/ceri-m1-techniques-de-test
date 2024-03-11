@@ -16,6 +16,7 @@ public class IPokemonTrainerFactoryTest {
         pokemonTrainerFactory = mock(IPokemonTrainerFactory.class);
     }
 
+
     @Test
     public void createTrainerTest() {
         PokemonTrainer trainer = new PokemonTrainer("Ash", Team.VALOR, mock(IPokedex.class));

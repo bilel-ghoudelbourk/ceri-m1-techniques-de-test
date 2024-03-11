@@ -15,6 +15,7 @@ public class IPokedexTest {
         pokedex = mock(IPokedex.class);
     }
 
+
     @Test
     public void addAndGetPokemonTest() throws PokedexException {
         Pokemon pokemon = new Pokemon(0, "Bulbizarre", 130, 130, 100, 613, 64, 4000, 4, 0.91);
