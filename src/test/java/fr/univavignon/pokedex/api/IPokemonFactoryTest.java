@@ -30,7 +30,8 @@ public class IPokemonFactoryTest {
 
     @Test
     public void createPokemonTest() {
-        when(pokemonFactory.createPokemon(0, 613, 64, 4000, 4)).thenReturn(new Pokemon(0, "Bulbizarre", 130, 130, 100, 613, 64, 4000, 4, 0.91));
+        when(pokemonFactory.createPokemon(0, 613, 64, 4000, 4))
+                .thenReturn(new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 0.91));
 
         Pokemon pokemon = pokemonFactory.createPokemon(0, 613, 64, 4000, 4);
 
@@ -38,7 +39,7 @@ public class IPokemonFactoryTest {
         assertEquals(126, pokemon.getAttack());
         assertEquals(126, pokemon.getDefense());
         assertEquals(90, pokemon.getStamina());
-
     }
+
 
 }
