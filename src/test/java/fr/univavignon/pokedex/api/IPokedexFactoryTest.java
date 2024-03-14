@@ -29,7 +29,6 @@ public class IPokedexFactoryTest {
         IPokedex pokedex1 = mock(IPokedex.class);
         IPokedex pokedex2 = mock(IPokedex.class);
         when(pokedexFactory.createPokedex(null, null)).thenReturn(pokedex1, pokedex2);
-
         IPokedex createdPokedex1 = pokedexFactory.createPokedex(null, null);
         IPokedex createdPokedex2 = pokedexFactory.createPokedex(null, null);
 

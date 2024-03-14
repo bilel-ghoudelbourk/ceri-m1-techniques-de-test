@@ -24,6 +24,7 @@ public class IPokemonMetadataProviderTest {
         assertEquals(126, metadata.getAttack());
         assertEquals(126, metadata.getDefense());
         assertEquals(90, metadata.getStamina());
+
     }
 
 

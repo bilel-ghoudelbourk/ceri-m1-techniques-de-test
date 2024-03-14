@@ -21,7 +21,6 @@ public class IPokemonTrainerFactoryTest {
     public void createTrainerTest() {
         PokemonTrainer trainer = new PokemonTrainer("Ash", Team.VALOR, mock(IPokedex.class));
         when(pokemonTrainerFactory.createTrainer("Ash", Team.VALOR, null)).thenReturn(trainer);
-
         PokemonTrainer createdTrainer = pokemonTrainerFactory.createTrainer("Ash", Team.VALOR, null);
 
         assertEquals("Ash", createdTrainer.getName());

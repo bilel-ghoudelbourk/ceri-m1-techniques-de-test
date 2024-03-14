@@ -16,18 +16,6 @@ public class IPokemonFactoryTest {
         pokemonFactory = mock(IPokemonFactory.class);
     }
 
-    @Test
-    public void createPokemonTest() {
-        when(pokemonFactory.createPokemon(0, 613, 64, 4000, 4)).thenReturn(new Pokemon(0, "Bulbizarre", 130, 130, 100, 613, 64, 4000, 4, 0.91));
-
-        Pokemon pokemon = pokemonFactory.createPokemon(0, 613, 64, 4000, 4);
-
-        assertNotNull(pokemon);
-        assertTrue(pokemon.getAttack() >= 126 && pokemon.getAttack() <= 141);
-        assertTrue(pokemon.getDefense() >= 126 && pokemon.getDefense() <= 141);
-        assertTrue(pokemon.getStamina() >= 90 && pokemon.getStamina() <= 105);
-
-    }
 
     @Test
     public void createPokemonWithSpecificIndexTest() {
@@ -38,6 +26,19 @@ public class IPokemonFactoryTest {
         Pokemon createdPokemon = pokemonFactory.createPokemon(pokemonIndex, 2729, 202, 5000, 4);
 
         assertEquals(aquali, createdPokemon);
+    }
+
+    @Test
+    public void createPokemonTest() {
+        when(pokemonFactory.createPokemon(0, 613, 64, 4000, 4)).thenReturn(new Pokemon(0, "Bulbizarre", 130, 130, 100, 613, 64, 4000, 4, 0.91));
+
+        Pokemon pokemon = pokemonFactory.createPokemon(0, 613, 64, 4000, 4);
+
+        assertNotNull(pokemon);
+        assertEquals(126, pokemon.getAttack());
+        assertEquals(126, pokemon.getDefense());
+        assertEquals(90, pokemon.getStamina());
+
     }
 
 }

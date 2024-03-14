@@ -21,7 +21,6 @@ public class IPokedexTest {
         Pokemon pokemon = new Pokemon(0, "Bulbizarre", 130, 130, 100, 613, 64, 4000, 4, 0.91);
         when(pokedex.addPokemon(pokemon)).thenReturn(0);
         when(pokedex.getPokemon(0)).thenReturn(pokemon);
-
         int index = pokedex.addPokemon(pokemon);
         Pokemon retrievedPokemon = pokedex.getPokemon(index);
 
