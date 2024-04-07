@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  codecov: codecov/codecov@4.0.1
+
 jobs:
   build:
     docker:
@@ -9,12 +12,20 @@ jobs:
       - run:
           name: Run tests
           command: mvn test
+      - codecov/upload:
+          path: 'target/site/jacoco/jacoco.xml'
 
 workflows:
   version: 2
   build-workflow:
     jobs:
       - build:
+          filters:
+            branches:
+              only: master
+      - codecov/upload:
+          requires:
+            - build
           filters:
             branches:
               only: master
