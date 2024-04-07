@@ -4,22 +4,36 @@ orbs:
   codecov: codecov/codecov@4.0.1
 
 jobs:
-  build:
+  build-and-test:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    steps:
+      - checkout
+      - maven/with_cache:
+          steps:
+            - run: mvn dependency:go-offline
+            - run: mvn clean verify
+
+  upload-to-codecov:
     docker:
       - image: circleci/openjdk:8-jdk
     steps:
       - checkout
       - run:
-          name: Run tests
-          command: mvn test
-      - codecov/upload:
-          token: ${CODECOV_TOKEN}
+          name: Prepare Code Coverage Report
+          command: mvn test jacoco:report
+      - run:
+          name: Upload to Codecov
+          command: bash <(curl -s https://codecov.io/bash)
 
 workflows:
   version: 2
-  build-and-upload:
+  build-test-and-upload:
     jobs:
-      - build:
+      - build-and-test
+      - upload-to-codecov:
+          requires:
+            - build-and-test
           filters:
             branches:
               only: master
