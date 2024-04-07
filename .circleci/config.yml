@@ -12,21 +12,13 @@ jobs:
       - run:
           name: Run tests
           command: mvn test
-      - codecov/upload:
-          path: 'target/site/jacoco/jacoco.xml'
-
+      - codecov/upload
 
 workflows:
   version: 2
   build-workflow:
     jobs:
       - build:
-          filters:
-            branches:
-              only: master
-      - codecov/upload:
-          requires:
-            - build
           filters:
             branches:
               only: master
