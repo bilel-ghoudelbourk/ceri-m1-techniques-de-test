@@ -12,11 +12,13 @@ jobs:
       - run:
           name: Run tests
           command: mvn test
-      - codecov/upload
+      - run:
+          name: Upload coverage to Codecov
+          command: ./codecov -t ${My_Env}
 
 workflows:
   version: 2
-  build-workflow:
+  build-and-upload:
     jobs:
       - build:
           filters:
