@@ -12,9 +12,8 @@ jobs:
       - run:
           name: Run tests
           command: mvn test
-      - run:
-          name: Upload coverage to Codecov
-          command: ./codecov -t ${My_Env}
+      - codecov/upload:
+          token: ${CODECOV_TOKEN}
 
 workflows:
   version: 2
