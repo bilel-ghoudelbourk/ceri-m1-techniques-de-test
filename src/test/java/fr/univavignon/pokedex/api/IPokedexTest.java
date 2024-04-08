@@ -89,7 +89,6 @@ public class IPokedexTest {
         pokedex.getPokemon(pokedex.size() + 1);
     }
 
-
     @Test
     public void getPokemonMetadataValidIndexTest() throws PokedexException {
         PokemonMetadata metadata = pokedex.getPokemonMetadata(0);
