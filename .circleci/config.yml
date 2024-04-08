@@ -9,10 +9,8 @@ jobs:
       - image: circleci/openjdk:8-jdk
     steps:
       - checkout
-      - maven/with_cache:
-          steps:
-            - run: mvn dependency:go-offline
-            - run: mvn clean verify
+      - run: mvn dependency:go-offline
+      - run: mvn clean verify
 
   upload-to-codecov:
     docker:
