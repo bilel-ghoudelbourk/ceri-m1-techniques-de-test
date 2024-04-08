@@ -80,15 +80,22 @@ public class IPokedexTest {
     }
 
     @Test(expected = PokedexException.class)
-    public void getPokemonInvalidIndexTest() throws PokedexException {
+    public void getPokemonInvalidIndexTest1() throws PokedexException {
         pokedex.getPokemon(-1);
     }
+
+    @Test(expected = PokedexException.class)
+    public void getPokemonInvalidIndexTest2() throws PokedexException {
+        pokedex.getPokemon(pokedex.size() + 1);
+    }
+
 
     @Test
     public void getPokemonMetadataValidIndexTest() throws PokedexException {
         PokemonMetadata metadata = pokedex.getPokemonMetadata(0);
         assertNotNull(metadata);
         assertEquals("Bulbizarre", metadata.getName());
+        assertEquals(126, metadata.getAttack());
     }
 
     @Test(expected = PokedexException.class)
@@ -101,29 +108,38 @@ public class IPokedexTest {
         Pokemon pokemon = pokedex.createPokemon(0, 613, 64, 4000, 4);
         assertNotNull(pokemon);
         assertEquals("Bulbizarre", pokemon.getName());
+        assertEquals(126, pokemon.getAttack());
+        assertEquals(90, pokemon.getStamina());
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void createPokemonWithNonexistentIndexTest() {
+        pokedex.createPokemon(1000, 613, 64, 4000, 4);
+    }
+
+    @Test(expected = PokedexException.class)
+    public void getPokemonWithIndexEqualToSizeTest() throws PokedexException {
+        int size = pokedex.size();
+        pokedex.getPokemon(size);
     }
 
     @Test
     public void getPokemonsSortedByNameTest() {
-        pokedex.addPokemon(new Pokemon(1, "Aquali", 186, 168, 260, 2729, 202, 5000, 4, 1));
         pokedex.addPokemon(new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 0.56));
-
+        pokedex.addPokemon(new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4, 1.0));
         List<Pokemon> sortedByName = pokedex.getPokemons(PokemonComparators.NAME);
-        assertNotNull(sortedByName);
-        assertFalse(sortedByName.isEmpty());
-        assertEquals("Aquali", sortedByName.get(0).getName());
+        assertEquals("Aquali should be first when sorted by name", "Aquali", sortedByName.get(0).getName());
     }
 
     @Test
     public void getPokemonsSortedByIndexTest() {
-        pokedex.addPokemon(new Pokemon(1, "Aquali", 186, 168, 260, 2729, 202, 5000, 4, 1));
+        pokedex.addPokemon(new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4, 1.0));
         pokedex.addPokemon(new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 0.56));
-
         List<Pokemon> sortedByIndex = pokedex.getPokemons(PokemonComparators.INDEX);
-        assertNotNull(sortedByIndex);
-        assertFalse(sortedByIndex.isEmpty());
-        assertEquals(0, sortedByIndex.get(0).getIndex());
+        assertEquals("Bulbizarre should be first when sorted by index", 0, sortedByIndex.get(0).getIndex());
     }
+
+
 
 
 }
