@@ -1,0 +1,5 @@
+fr\univavignon\pokedex\api\PokemonMetadataProvider.class
+fr\univavignon\pokedex\api\PokedexFactory.class
+fr\univavignon\pokedex\api\PokemonFactory.class
+fr\univavignon\pokedex\api\PokemonTrainerFactory.class
+fr\univavignon\pokedex\api\Pokedex.class
