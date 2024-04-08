@@ -17,8 +17,8 @@ public class PokemonFactory implements IPokemonFactory {
 <span class="fc" id="L17">            PokemonMetadata metadata = metadataProvider.getPokemonMetadata(index);</span>
 <span class="fc" id="L18">            return new Pokemon(index, metadata.getName(), metadata.getAttack(), metadata.getDefense(), metadata.getStamina(),cp, hp, dust, candy,0);</span>
 
-<span class="nc" id="L20">        } catch (PokedexException e) {</span>
-<span class="nc" id="L21">            throw new RuntimeException(&quot;Impossible de récupérer les métadonnées pour le Pokémon d'index &quot; + index, e);</span>
+<span class="fc" id="L20">        } catch (PokedexException e) {</span>
+<span class="fc" id="L21">            throw new RuntimeException(&quot;Impossible de récupérer les métadonnées pour le Pokémon d'index &quot; + index, e);</span>
         }
     }
 }

@@ -13,8 +13,8 @@ public class PokedexFactory implements IPokedexFactory {
 
     @Override
     public IPokedex createPokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {
-<span class="pc bpc" id="L16" title="1 of 2 branches missed.">        IPokemonMetadataProvider effectiveMetadataProvider = metadataProvider != null ? metadataProvider : this.metadataProvider;</span>
-<span class="pc bpc" id="L17" title="1 of 2 branches missed.">        IPokemonFactory effectivePokemonFactory = pokemonFactory != null ? pokemonFactory : this.pokemonFactory;</span>
+<span class="fc bfc" id="L16" title="All 2 branches covered.">        IPokemonMetadataProvider effectiveMetadataProvider = metadataProvider != null ? metadataProvider : this.metadataProvider;</span>
+<span class="fc bfc" id="L17" title="All 2 branches covered.">        IPokemonFactory effectivePokemonFactory = pokemonFactory != null ? pokemonFactory : this.pokemonFactory;</span>
 <span class="fc" id="L18">        return new Pokedex(effectiveMetadataProvider, effectivePokemonFactory);</span>
     }
 }
