@@ -3,27 +3,21 @@
 import java.util.ArrayList;
 import java.util.List;
 
-<span class="nc" id="L6">public class PokemonMetadataProvider implements IPokemonMetadataProvider {</span>
+<span class="fc" id="L6">public class PokemonMetadataProvider implements IPokemonMetadataProvider {</span>
 
-<span class="nc" id="L8">    private static final List&lt;PokemonMetadata&gt; metadataList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L8">    private static final List&lt;PokemonMetadata&gt; metadataList = new ArrayList&lt;&gt;();</span>
 
     static {
-        // Ajout des métadonnées pour Bulbizarre
-<span class="nc" id="L12">        metadataList.add(new PokemonMetadata(0, &quot;Bulbizarre&quot;, 126, 126, 90));</span>
-        // Ajout des métadonnées pour Aquali
-<span class="nc" id="L14">        metadataList.add(new PokemonMetadata(133, &quot;Aquali&quot;, 186, 168, 260));</span>
-        // Cette structure suppose que l'index est unique et séquentiel. Si ce n'est pas le cas,
-        // considérez l'utilisation d'une Map&lt;Integer, PokemonMetadata&gt; pour une recherche plus efficace par index.
-<span class="nc" id="L17">    }</span>
+<span class="fc" id="L11">        metadataList.add(new PokemonMetadata(0, &quot;Bulbizarre&quot;, 126, 126, 90));</span>
+<span class="fc" id="L12">        metadataList.add(new PokemonMetadata(133, &quot;Aquali&quot;, 186, 168, 260));</span>
+<span class="fc" id="L13">    }</span>
 
     @Override
     public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
-        // Cherche les métadonnées basées sur l'index. Cet exemple peut nécessiter une optimisation
-        // pour de grandes quantités de données ou des indices non séquentiels.
-<span class="nc" id="L23">        return metadataList.stream()</span>
-<span class="nc bnc" id="L24" title="All 2 branches missed.">                .filter(metadata -&gt; metadata.getIndex() == index)</span>
-<span class="nc" id="L25">                .findFirst()</span>
-<span class="nc" id="L26">                .orElseThrow(() -&gt; new PokedexException(&quot;Métadonnées pour Pokémon d'index &quot; + index + &quot; non trouvées.&quot;));</span>
+<span class="fc" id="L17">        return metadataList.stream()</span>
+<span class="fc bfc" id="L18" title="All 2 branches covered.">                .filter(metadata -&gt; metadata.getIndex() == index)</span>
+<span class="fc" id="L19">                .findFirst()</span>
+<span class="fc" id="L20">                .orElseThrow(() -&gt; new PokedexException(&quot;Métadonnées pour Pokémon d'index &quot; + index + &quot; non trouvées.&quot;));</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

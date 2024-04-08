@@ -10,41 +10,41 @@ public class Pokedex implements IPokedex {
     private IPokemonMetadataProvider metadataProvider;
     private IPokemonFactory pokemonFactory;
 
-<span class="nc" id="L13">    public Pokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {</span>
-<span class="nc" id="L14">        this.pokemons = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L15">        this.metadataProvider = metadataProvider;</span>
-<span class="nc" id="L16">        this.pokemonFactory = pokemonFactory;</span>
-<span class="nc" id="L17">    }</span>
+<span class="fc" id="L13">    public Pokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {</span>
+<span class="fc" id="L14">        this.pokemons = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L15">        this.metadataProvider = metadataProvider;</span>
+<span class="fc" id="L16">        this.pokemonFactory = pokemonFactory;</span>
+<span class="fc" id="L17">    }</span>
 
     @Override
     public int size() {
-<span class="nc" id="L21">        return pokemons.size();</span>
+<span class="fc" id="L21">        return pokemons.size();</span>
     }
 
     @Override
     public int addPokemon(Pokemon pokemon) {
-<span class="nc" id="L26">        pokemons.add(pokemon);</span>
-<span class="nc" id="L27">        return pokemons.size() - 1;</span>
+<span class="fc" id="L26">        pokemons.add(pokemon);</span>
+<span class="fc" id="L27">        return pokemons.size() - 1;</span>
     }
 
     @Override
     public Pokemon getPokemon(int id) throws PokedexException {
-<span class="nc bnc" id="L32" title="All 4 branches missed.">        if (id &lt; 0 || id &gt;= size()) {</span>
-<span class="nc" id="L33">            throw new PokedexException(&quot;ID de Pokémon invalide.&quot;);</span>
+<span class="pc bpc" id="L32" title="1 of 4 branches missed.">        if (id &lt; 0 || id &gt;= size()) {</span>
+<span class="fc" id="L33">            throw new PokedexException(&quot;ID de Pokémon invalide.&quot;);</span>
         }
-<span class="nc" id="L35">        return pokemons.get(id);</span>
+<span class="fc" id="L35">        return pokemons.get(id);</span>
     }
 
     @Override
     public List&lt;Pokemon&gt; getPokemons() {
-<span class="nc" id="L40">        return Collections.unmodifiableList(new ArrayList&lt;&gt;(pokemons));</span>
+<span class="fc" id="L40">        return Collections.unmodifiableList(new ArrayList&lt;&gt;(pokemons));</span>
     }
 
     @Override
     public List&lt;Pokemon&gt; getPokemons(Comparator&lt;Pokemon&gt; order) {
-<span class="nc" id="L45">        List&lt;Pokemon&gt; sortedPokemons = new ArrayList&lt;&gt;(pokemons);</span>
-<span class="nc" id="L46">        sortedPokemons.sort(order);</span>
-<span class="nc" id="L47">        return Collections.unmodifiableList(sortedPokemons);</span>
+<span class="fc" id="L45">        List&lt;Pokemon&gt; sortedPokemons = new ArrayList&lt;&gt;(pokemons);</span>
+<span class="fc" id="L46">        sortedPokemons.sort(order);</span>
+<span class="fc" id="L47">        return Collections.unmodifiableList(sortedPokemons);</span>
     }
 
     @Override
@@ -57,7 +57,7 @@ public class Pokedex implements IPokedex {
         try {
 <span class="nc" id="L58">            return metadataProvider.getPokemonMetadata(index);</span>
 <span class="nc" id="L59">        } catch (PokedexException e) {</span>
-<span class="nc" id="L60">            throw new PokedexException(&quot;Impossible de récupérer les métadonnées pour le Pokémon d'index &quot;);</span>
+<span class="nc" id="L60">            throw new PokedexException(&quot;Impossible de récupérer les métadonnées pour le Pokémon d'index &quot;+ index);</span>
         }
     }
 }

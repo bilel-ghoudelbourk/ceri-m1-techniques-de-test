@@ -1,30 +1,35 @@
 package fr.univavignon.pokedex.api;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class IPokemonTrainerFactoryTest {
 
-    private IPokemonTrainerFactory pokemonTrainerFactory;
+    private IPokemonTrainerFactory trainerFactory;
+    private IPokemonMetadataProvider metadataProvider;
+    private IPokemonFactory pokemonFactory;
+    private IPokedexFactory pokedexFactory;
 
     @Before
     public void setUp() {
-        pokemonTrainerFactory = mock(IPokemonTrainerFactory.class);
-    }
 
+        metadataProvider = new PokemonMetadataProvider();
+        pokemonFactory = new PokemonFactory(metadataProvider);
+        pokedexFactory = new PokedexFactory(metadataProvider, pokemonFactory);
+        trainerFactory = new PokemonTrainerFactory( metadataProvider, pokemonFactory);
+    }
 
     @Test
     public void createTrainerTest() {
-        PokemonTrainer trainer = new PokemonTrainer("Ash", Team.VALOR, mock(IPokedex.class));
-        when(pokemonTrainerFactory.createTrainer("Ash", Team.VALOR, null)).thenReturn(trainer);
-        PokemonTrainer createdTrainer = pokemonTrainerFactory.createTrainer("Ash", Team.VALOR, null);
+        String trainerName = "Ash";
+        Team team = Team.VALOR;
+        PokemonTrainer trainer = trainerFactory.createTrainer(trainerName, team, pokedexFactory);
 
-        assertEquals("Ash", createdTrainer.getName());
-        assertEquals(Team.VALOR, createdTrainer.getTeam());
+        assertNotNull("Le trainer ne devrait pas être null", trainer);
+        assertEquals("Le nom du trainer devrait correspondre", trainerName, trainer.getName());
+        assertEquals("L'équipe du trainer devrait correspondre", team, trainer.getTeam());
+
+        assertNotNull("Le pokedex du trainer ne devrait pas être null", trainer.getPokedex());
     }
-
 }

@@ -7,20 +7,18 @@ public class PokemonFactory implements IPokemonFactory {
 
     private IPokemonMetadataProvider metadataProvider;
 
-<span class="nc" id="L10">    public PokemonFactory(IPokemonMetadataProvider metadataProvider) {</span>
-<span class="nc" id="L11">        this.metadataProvider = metadataProvider;</span>
-<span class="nc" id="L12">    }</span>
+<span class="fc" id="L10">    public PokemonFactory(IPokemonMetadataProvider metadataProvider) {</span>
+<span class="fc" id="L11">        this.metadataProvider = metadataProvider;</span>
+<span class="fc" id="L12">    }</span>
 
     @Override
     public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
         try {
-<span class="nc" id="L17">            PokemonMetadata metadata = metadataProvider.getPokemonMetadata(index);</span>
-            // Création et retour d'une instance de Pokemon avec les métadonnées et les paramètres fournis
-<span class="nc" id="L19">            return new Pokemon(index, metadata.getName(), cp, hp, dust, candy, metadata.getAttack(), metadata.getDefense(), metadata.getStamina(),0);</span>
+<span class="fc" id="L17">            PokemonMetadata metadata = metadataProvider.getPokemonMetadata(index);</span>
+<span class="fc" id="L18">            return new Pokemon(index, metadata.getName(), metadata.getAttack(), metadata.getDefense(), metadata.getStamina(),cp, hp, dust, candy,0);</span>
 
-<span class="nc" id="L21">        } catch (PokedexException e) {</span>
-            // Gestion de l'exception ou retour d'une valeur par défaut si nécessaire
-<span class="nc" id="L23">            throw new RuntimeException(&quot;Impossible de récupérer les métadonnées pour le Pokémon d'index &quot; + index, e);</span>
+<span class="nc" id="L20">        } catch (PokedexException e) {</span>
+<span class="nc" id="L21">            throw new RuntimeException(&quot;Impossible de récupérer les métadonnées pour le Pokémon d'index &quot; + index, e);</span>
         }
     }
 }

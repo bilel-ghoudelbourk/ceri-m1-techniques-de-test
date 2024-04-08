@@ -6,19 +6,16 @@
 public class PokedexFactory implements IPokedexFactory {
     private IPokemonMetadataProvider metadataProvider;
     private IPokemonFactory pokemonFactory;
-
-    // Constructeur optionnel pour l'injection de dépendances
-<span class="nc" id="L11">    public PokedexFactory(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {</span>
-<span class="nc" id="L12">        this.metadataProvider = metadataProvider;</span>
-<span class="nc" id="L13">        this.pokemonFactory = pokemonFactory;</span>
-<span class="nc" id="L14">    }</span>
+<span class="fc" id="L9">    public PokedexFactory(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {</span>
+<span class="fc" id="L10">        this.metadataProvider = metadataProvider;</span>
+<span class="fc" id="L11">        this.pokemonFactory = pokemonFactory;</span>
+<span class="fc" id="L12">    }</span>
 
     @Override
     public IPokedex createPokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {
-        // Utilise les dépendances injectées si non spécifiées
-<span class="nc bnc" id="L19" title="All 2 branches missed.">        IPokemonMetadataProvider effectiveMetadataProvider = metadataProvider != null ? metadataProvider : this.metadataProvider;</span>
-<span class="nc bnc" id="L20" title="All 2 branches missed.">        IPokemonFactory effectivePokemonFactory = pokemonFactory != null ? pokemonFactory : this.pokemonFactory;</span>
-<span class="nc" id="L21">        return new Pokedex(effectiveMetadataProvider, effectivePokemonFactory);</span>
+<span class="pc bpc" id="L16" title="1 of 2 branches missed.">        IPokemonMetadataProvider effectiveMetadataProvider = metadataProvider != null ? metadataProvider : this.metadataProvider;</span>
+<span class="pc bpc" id="L17" title="1 of 2 branches missed.">        IPokemonFactory effectivePokemonFactory = pokemonFactory != null ? pokemonFactory : this.pokemonFactory;</span>
+<span class="fc" id="L18">        return new Pokedex(effectiveMetadataProvider, effectivePokemonFactory);</span>
     }
 }
 
