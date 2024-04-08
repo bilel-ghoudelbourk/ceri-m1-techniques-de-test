@@ -6,7 +6,7 @@ orbs:
 jobs:
   build-and-test:
     docker:
-      - image: openjdk:17-jdk
+      - image: cimg/openjdk:21.0.2
     steps:
       - checkout
       - run: mvn dependency:go-offline
