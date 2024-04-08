@@ -10,6 +10,7 @@ jobs:
     steps:
       - checkout
       - run: mvn dependency:go-offline
+      - run: mvn checkstyle:check compile
       - run: mvn clean verify
 
   upload-to-codecov:
