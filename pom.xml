@@ -52,6 +52,28 @@
                 </executions>
             </plugin>
 
+
+            <plugin>
+                <groupId>com.github.bordertech.buildtools</groupId>
+                <artifactId>badger</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>badges</goal>
+                        </goals>
+                        <configuration>
+                            <outputDir>badges</outputDir>
+                            <inputFiles>
+                                <inputFile>target/checkstyle-result.xml</inputFile>
+                            </inputFiles>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
