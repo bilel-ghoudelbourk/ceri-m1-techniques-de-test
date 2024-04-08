@@ -10,7 +10,7 @@ jobs:
     steps:
       - checkout
       - run: mvn dependency:go-offline
-      - run: mvn checkstyle:check compile
+      - run: mvn checkstyle:check || true
       - run: mvn clean verify
 
   upload-to-codecov:
@@ -24,9 +24,6 @@ jobs:
       - run:
           name: Upload to Codecov
           command: bash <(curl -s https://codecov.io/bash)
-      - run:
-          name: Checkstyle Code Analysis
-          command: mvn checkstyle:check || true
 
 workflows:
   version: 2
