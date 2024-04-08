@@ -6,7 +6,7 @@ orbs:
 jobs:
   build-and-test:
     docker:
-      - image: circleci/openjdk:8-jdk
+      - image: openjdk:17-jdk
     steps:
       - checkout
       - run: mvn dependency:go-offline
