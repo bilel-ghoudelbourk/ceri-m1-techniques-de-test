@@ -15,7 +15,7 @@ jobs:
 
   upload-to-codecov:
     docker:
-      - image: circleci/openjdk:8-jdk
+      - image: cimg/openjdk:21.0.2
     steps:
       - checkout
       - run:
